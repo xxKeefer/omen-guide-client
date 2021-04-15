@@ -20,7 +20,7 @@ const App: React.FC = () => {
           component={Example}
         />
         <Gate
-          user={{ email: 'test', roles: ['user', 'admin'] }}
+          user={testAdmin}
           role="admin"
           exact={true}
           path={'/rules'}
