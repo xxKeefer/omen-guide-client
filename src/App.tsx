@@ -1,11 +1,11 @@
-import React, { ReactNode } from 'react';
+import React from 'react'
 
-function App(): ReactNode {
+const App: React.FC = () => {
   return (
     <div className="App">
       <div>init commit</div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
