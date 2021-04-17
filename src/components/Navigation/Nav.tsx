@@ -11,9 +11,7 @@ import { useHistory } from 'react-router-dom'
 
 const Nav = () => {
   const history = useHistory()
-  const preventDefault = (event: React.SyntheticEvent) => {
-    event.preventDefault()
-  }
+
   return (
     <AppBar position="static">
       <Toolbar>
