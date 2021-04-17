@@ -1,11 +1,11 @@
 import React from 'react'
-import { Grid, Button, Typography, Paper, Box, Link } from '@material-ui/core'
+import { Grid, Typography, Paper, Box, Link } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import LoginForm from '../components/Forms/LoginForm'
-import LoginStyles from './styles/Login'
+import AuthenticationStyles from './styles/AuthenticationPages'
 
 const Login: React.FC = () => {
-  const classes = LoginStyles()
+  const classes = AuthenticationStyles()
   const history = useHistory()
   return (
     <Box className={classes.content}>

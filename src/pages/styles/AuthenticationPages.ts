@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles'
 
-const LoginStyles = makeStyles({
+const AuthenticationStyles = makeStyles({
   content: {
     height: '80vh',
     display: 'flex',
@@ -13,4 +13,4 @@ const LoginStyles = makeStyles({
   }
 })
 
-export default LoginStyles
+export default AuthenticationStyles

@@ -51,7 +51,6 @@ const LoginForm: React.FC<Interface> = ({ onSubmit }) => {
                   Login
                 </Button>
               </Grid>
-              {/* <pre>{JSON.stringify(values, null, 2)}</pre> */}
             </Form>
           </Grid>
         )}
