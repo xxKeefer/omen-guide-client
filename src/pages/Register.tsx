@@ -1,11 +1,14 @@
 import React from 'react'
-import TestButtons from '../components/TestButtons'
+import RegisterForm from '../components/Forms/RegisterForm'
 
 const Register: React.FC = () => {
   return (
-    <div>
-      <div>Register</div>
-      <TestButtons />
+    <div style={{ textAlign: 'center' }}>
+      <RegisterForm
+        onSubmit={(values) => {
+          console.log(values)
+        }}
+      />
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
+import Nav from './components/Navigation/Nav'
 import { Example, Home, Login, Register, Rules } from './pages/exports'
 import Gate from './routes/Gate'
 
@@ -7,7 +8,9 @@ const App: React.FC = () => {
   // const testUser = { email: 'test', roles: ['user'] }
   const testAdmin = { email: 'test', roles: ['user', 'admin'] }
   return (
-    <Router>
+    <>
+      <Nav />
+
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
@@ -27,7 +30,7 @@ const App: React.FC = () => {
           component={Rules}
         />
       </Switch>
-    </Router>
+    </>
   )
 }
 
