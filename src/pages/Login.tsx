@@ -2,24 +2,14 @@ import React from 'react'
 import { Grid, Button, Typography, Paper, Box, Link } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import LoginForm from '../components/Forms/LoginForm'
+import LoginStyles from './styles/Login'
 
 const Login: React.FC = () => {
+  const classes = LoginStyles()
   const history = useHistory()
   return (
-    <Box
-      style={{
-        height: '80vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
-    >
-      <Paper
-        style={{
-          maxWidth: '40vw',
-          padding: '10px'
-        }}
-      >
+    <Box className={classes.content}>
+      <Paper className={classes.formHolder}>
         <Grid container spacing={3} justify="center">
           <Grid item xs={12}>
             <Typography variant="h3" align="center">
