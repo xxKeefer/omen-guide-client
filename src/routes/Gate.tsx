@@ -1,19 +1,25 @@
+import { useSelector } from 'react-redux'
 import { Route, Redirect, RouteProps, useLocation } from 'react-router-dom'
-import UserInterface from '../interfaces/user'
+import User from '../interfaces/Auth/User'
 
 interface GateProps extends RouteProps {
-  user: UserInterface | null
-  role: string | undefined
+  adminOnly?: boolean
 }
 
-const Gate = ({ user, role, exact, path, component }: GateProps) => {
+const Gate = ({
+  adminOnly = true,
+  exact = true,
+  path,
+  component
+}: GateProps) => {
   let location = useLocation()
+  const { name, isAdmin } = useSelector<User, User>((state) => state)
 
-  if (!user) {
+  if (name === null) {
     return <Redirect to={{ pathname: '/', state: { from: location } }} />
   }
 
-  if (role && !user.roles.includes(role)) {
+  if (adminOnly && isAdmin) {
     return <Redirect to={{ pathname: '/home', state: { from: location } }} />
   }
 
