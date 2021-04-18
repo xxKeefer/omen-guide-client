@@ -22,38 +22,36 @@ const LoginForm: React.FC<Interface> = ({ onSubmit }) => {
           onSubmit(values)
         }}
       >
-        {({ values }) => (
-          <Grid container justify="center">
-            <Form className={classes.form}>
-              <Field
-                className={classes.textfield}
-                name="identifier"
-                label="username or email"
-                placeholder="username@email.com"
-                as={TextField}
-              />
-              <Field
-                className={classes.textfield}
-                name="password"
-                label="password"
-                placeholder="password"
-                type="password"
-                as={TextField}
-              />
-              <Grid item container justify="center">
-                <Button
-                  className={classes.button}
-                  type="submit"
-                  variant="contained"
-                  size="large"
-                  color="primary"
-                >
-                  Login
-                </Button>
-              </Grid>
-            </Form>
-          </Grid>
-        )}
+        <Grid container justify="center">
+          <Form className={classes.form}>
+            <Field
+              className={classes.textfield}
+              name="email"
+              label="email"
+              placeholder="email"
+              as={TextField}
+            />
+            <Field
+              className={classes.textfield}
+              name="password"
+              label="password"
+              placeholder="password"
+              type="password"
+              as={TextField}
+            />
+            <Grid item container justify="center">
+              <Button
+                className={classes.button}
+                type="submit"
+                variant="contained"
+                size="large"
+                color="primary"
+              >
+                Login
+              </Button>
+            </Grid>
+          </Form>
+        </Grid>
       </Formik>
     </Grid>
   )

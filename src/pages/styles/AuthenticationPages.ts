@@ -10,6 +10,13 @@ const AuthenticationStyles = makeStyles({
   formHolder: {
     maxWidth: '40vw',
     padding: '10px'
+  },
+  errorMessage: {
+    textAlign: 'center',
+    fontSize: '16px',
+    fontWeight: 'bold',
+    color: 'red',
+    marginBottom: '-20px'
   }
 })
 

@@ -13,7 +13,8 @@ type Action = { type: 'AUTHENTICATE_USER'; payload: AuthState }
 export default (state: AuthState = initialState, action: Action) => {
   switch (action.type) {
     case 'AUTHENTICATE_USER':
-      return { ...state, auth: action.payload }
+      console.log('REDUX-=-=-=-=-=-=> ', { action })
+      return { ...state, ...action.payload }
 
     default:
       return state

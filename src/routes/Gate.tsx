@@ -20,7 +20,7 @@ const Gate = ({
   }
 
   if (adminOnly && isAdmin) {
-    return <Redirect to={{ pathname: '/home', state: { from: location } }} />
+    return <Redirect to={{ pathname: '/', state: { from: location } }} />
   }
 
   return <Route exact={exact} path={path} component={component} />

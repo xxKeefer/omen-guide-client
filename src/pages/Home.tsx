@@ -1,24 +1,14 @@
 import React from 'react'
 import { Grid, Button, Typography, Paper, Box } from '@material-ui/core'
+import AuthenticationStyles from './styles/AuthenticationPages'
 import { useHistory } from 'react-router-dom'
 
 const Home: React.FC = () => {
+  const classes = AuthenticationStyles()
   const history = useHistory()
   return (
-    <Box
-      style={{
-        height: '80vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
-    >
-      <Paper
-        style={{
-          maxWidth: '40vw',
-          padding: '10px'
-        }}
-      >
+    <Box className={classes.content}>
+      <Paper className={classes.formHolder}>
         <Grid container spacing={3} justify="center">
           <Grid item xs={12}>
             <Typography variant="h1" align="center">

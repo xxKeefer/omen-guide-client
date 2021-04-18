@@ -34,7 +34,7 @@ const Register: React.FC = () => {
                 Already have an account?
                 <Link
                   onClick={() => {
-                    history.push('/register')
+                    history.push('/login')
                   }}
                 >
                   &nbsp;Login&nbsp;

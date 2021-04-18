@@ -1,10 +1,8 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 import Nav from './components/Navigation/Nav'
 import { Example, Home, Login, Register, Rules } from './pages/exports'
 import Gate from './routes/Gate'
-import AuthInterface from './interfaces/Auth/Auth'
 
 const App: React.FC = () => {
   return (
