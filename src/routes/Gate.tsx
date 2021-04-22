@@ -1,25 +1,23 @@
-import { useSelector } from 'react-redux'
+import { useAuth } from '../contexts/AuthProvider'
 import { Route, Redirect, RouteProps, useLocation } from 'react-router-dom'
-import User from '../interfaces/Auth/User'
-
 interface GateProps extends RouteProps {
-  adminOnly?: boolean
+  roles?: string[]
 }
 
 const Gate = ({
-  adminOnly = true,
+  roles = ['authenticated'],
   exact = true,
   path,
   component
 }: GateProps) => {
   let location = useLocation()
-  const { name, isAdmin } = useSelector<User, User>((state) => state)
+  const { user } = useAuth()
 
-  if (name === null) {
+  if (!!user?.name || !!user?.email) {
     return <Redirect to={{ pathname: '/', state: { from: location } }} />
   }
 
-  if (adminOnly && isAdmin) {
+  if (roles && roles.includes(user!.role)) {
     return <Redirect to={{ pathname: '/', state: { from: location } }} />
   }
 

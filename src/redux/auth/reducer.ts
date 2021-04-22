@@ -1,16 +1,16 @@
-import AuthState from '../../interfaces/Auth/Auth'
+import User from '../../interfaces/Auth/User'
 
-const initialState: AuthState = {
+const initialState: User = {
   name: null,
   email: null,
-  isAdmin: null
+  role: 'public'
 }
 
-type Action = { type: 'AUTHENTICATE_USER'; payload: AuthState }
+type Action = { type: 'AUTHENTICATE_USER'; payload: User }
 
 // const actionIs = { authenticate_user: "AUTHENTICATE_USER" }
 
-export default (state: AuthState = initialState, action: Action) => {
+export default (state: User = initialState, action: Action) => {
   switch (action.type) {
     case 'AUTHENTICATE_USER':
       console.log('REDUX-=-=-=-=-=-=> ', { action })

@@ -3,13 +3,11 @@ import { Grid, Typography, Paper, Box, Link } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import LoginForm from '../components/Forms/LoginForm'
 import AuthenticationStyles from './styles/AuthenticationPages'
-import { useMutation } from '@apollo/client'
 import { useDispatch, useSelector } from 'react-redux'
 import User from '../interfaces/Auth/User'
 import { LOGIN } from '../queries/auth'
 
 const Login: React.FC = () => {
-  const [login] = useMutation(LOGIN)
   const classes = AuthenticationStyles()
   const history = useHistory()
   const dispatch = useDispatch()
@@ -50,17 +48,6 @@ const Login: React.FC = () => {
               onSubmit={async (values) => {
                 const { email, password } = values
                 try {
-                  const { data } = await login({
-                    variables: { email, password }
-                  })
-                  const {
-                    name,
-                    isAdmin
-                  } = data.authenticateUserWithPassword.item
-                  dispatch({
-                    type: 'AUTHENTICATE_USER',
-                    payload: { name, email, isAdmin }
-                  })
                   // history.push('/example')
                 } catch (error) {
                   console.log(error.message)

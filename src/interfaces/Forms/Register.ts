@@ -1,9 +1,5 @@
-export interface RegisterValues {
-  name: string
-  email: string
-  password: string
-}
+import { AuthInterface } from '../Auth/User'
 
 export interface RegisterForm {
-  onSubmit: (values: RegisterValues) => void
+  onSubmit: (values: AuthInterface) => void
 }

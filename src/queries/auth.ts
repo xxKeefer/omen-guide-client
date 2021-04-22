@@ -1,12 +1,30 @@
-import { gql } from '@apollo/client'
+import { gql } from 'graphql-request'
 
 export const LOGIN = gql`
-  mutation authenticateUserWithPassword($email: String, $password: String) {
-    authenticateUserWithPassword(email: $email, password: $password) {
-      item {
-        name
+  mutation login($input:{$identifier: String, $password: String})
+    login( input:{identifier: $identifier, password: $password} ) {
+      jwt
+      user {
+        username
         email
-        isAdmin
+        role {
+          type
+        }
+      }
+    }
+  }
+`
+
+export const REGISTER = gql`
+  mutation register($input: UsersPermissionsRegisterInput!) {
+    register(input: $input) {
+      jwt
+      user {
+        username
+        email
+        role {
+          type
+        }
       }
     }
   }

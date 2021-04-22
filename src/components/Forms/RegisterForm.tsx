@@ -1,28 +1,29 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import FormStyles from './styles/Form'
-import {
-  RegisterValues as Values,
-  RegisterForm as Interface
-} from '../../interfaces/Forms/Register'
+import { AuthInterface } from '../../interfaces/Auth/User'
+import { RegisterForm as Interface } from '../../interfaces/Forms/Register'
 import { Button, TextField, Grid } from '@material-ui/core'
+import { useAuth } from '../../contexts/AuthProvider'
 
 const RegisterForm: React.FC<Interface> = ({ onSubmit }) => {
+  const { actions } = useAuth()
   const classes = FormStyles()
-  const initialValues: Values = {
+  const initialValues: AuthInterface = {
+    username: '',
     email: '',
-    name: '',
     password: ''
   }
   return (
     <Grid container justify="center">
       <Formik
         initialValues={initialValues}
-        onSubmit={(values: Values) => {
-          onSubmit(values)
+        onSubmit={async (values: AuthInterface) => {
+          console.log({ values })
+          await actions!.register(values)
         }}
       >
-        {({ values }) => (
+        {() => (
           <Grid container justify="center">
             <Form className={classes.form}>
               <Field

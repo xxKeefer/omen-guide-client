@@ -14,7 +14,7 @@ const App: React.FC = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Gate path="/example" component={Example} />
-        <Gate adminOnly path="/rules" component={Rules} />
+        <Gate roles={['Moderator']} path="/rules" component={Rules} />
       </Switch>
     </>
   )

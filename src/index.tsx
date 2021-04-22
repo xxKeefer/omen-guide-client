@@ -1,20 +1,12 @@
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/core/styles'
-import { ApolloClient, InMemoryCache } from '@apollo/client'
-import { ApolloProvider } from '@apollo/client/react'
-import { Provider } from 'react-redux'
-import { store } from './redux/store'
+import { AuthProvider } from './contexts/AuthProvider'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Helmet } from 'react-helmet'
 import { BrowserRouter as Router } from 'react-router-dom'
 import App from './App'
 import theme from './theme'
-
-const apollo = new ApolloClient({
-  uri: 'http://localhost:8080/admin/api',
-  cache: new InMemoryCache()
-})
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,15 +19,13 @@ ReactDOM.render(
       />
     </Helmet>
     <CssBaseline />
-    <Provider store={store}>
-      <ApolloProvider client={apollo}>
-        <ThemeProvider theme={theme}>
-          <Router>
-            <App />
-          </Router>
-        </ThemeProvider>
-      </ApolloProvider>
-    </Provider>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <App />
+        </Router>
+      </ThemeProvider>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
