@@ -1,19 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { GraphQLClient } from 'graphql-request'
-import User, { Identifier, AuthInterface } from '../interfaces/Auth/User'
+import User, {
+  UserIdentifier,
+  AuthInterface,
+  AuthValue
+} from '../interfaces/User'
 import { LOGIN, REGISTER } from '../queries/auth'
-
-interface AuthActions {
-  register: (variables: AuthInterface) => Promise<void>
-  login: (variables: Identifier) => Promise<void>
-  logout: () => void
-}
-
-interface AuthValue {
-  token?: string
-  user?: User
-  actions?: AuthActions
-}
 
 const AuthContext = React.createContext<AuthValue>({})
 
@@ -46,7 +38,7 @@ export const AuthProvider = ({ children }: any) => {
     }
     setUser(userData)
   }
-  const login = async (variables: Identifier) => {
+  const login = async (variables: UserIdentifier) => {
     const data = await AuthClient.request(LOGIN, variables)
     if (data.errors) return console.log('Something went wrong.')
     setToken(data.jwt)

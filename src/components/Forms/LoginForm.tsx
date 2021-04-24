@@ -2,23 +2,20 @@ import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import { Button, TextField, Grid } from '@material-ui/core'
 import FormStyles from './styles/Form'
-import {
-  LoginValues as Values,
-  LoginForm as Interface
-} from '../../interfaces/Forms/Login'
+import { LoginForm as Interface } from '../../interfaces/Forms'
+import { UserIdentifier } from '../../interfaces/User'
 
 const LoginForm: React.FC<Interface> = ({ onSubmit }) => {
   const classes = FormStyles()
-  const initialValues: Values = {
-    email: '',
-    name: '',
+  const initialValues: UserIdentifier = {
+    identifier: '',
     password: ''
   }
   return (
     <Grid container justify="center">
       <Formik
         initialValues={initialValues}
-        onSubmit={(values: Values) => {
+        onSubmit={(values: UserIdentifier) => {
           onSubmit(values)
         }}
       >

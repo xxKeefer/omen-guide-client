@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import LoginForm from '../components/Forms/LoginForm'
 import AuthenticationStyles from './styles/AuthenticationPages'
 import { useDispatch, useSelector } from 'react-redux'
-import User from '../interfaces/Auth/User'
+import User from '../interfaces/User'
 import { LOGIN } from '../queries/auth'
 
 const Login: React.FC = () => {
@@ -46,7 +46,7 @@ const Login: React.FC = () => {
           <Grid item xs={12}>
             <LoginForm
               onSubmit={async (values) => {
-                const { email, password } = values
+                const { identifier, password } = values
                 try {
                   // history.push('/example')
                 } catch (error) {

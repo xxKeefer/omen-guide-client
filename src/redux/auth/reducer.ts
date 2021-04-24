@@ -1,4 +1,4 @@
-import User from '../../interfaces/Auth/User'
+import User from '../../interfaces/User'
 
 const initialState: User = {
   name: null,
