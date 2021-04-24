@@ -4,6 +4,11 @@ export default interface UserInterface {
   role: string
 }
 
+export interface UserData {
+  token: string
+  user: UserInterface
+}
+
 export interface UserIdentifier {
   identifier: string
   password: string
@@ -14,14 +19,22 @@ export interface AuthInterface {
   password: string
 }
 
-export interface AuthActions {
-  register: (variables: AuthInterface) => Promise<void>
-  login: (variables: UserIdentifier) => Promise<void>
+export interface ActionInterface {
+  register: (variables: AuthInterface) => Promise<UserData>
+  login: (variables: UserIdentifier) => Promise<UserData>
+  logout: () => UserData
+  check: (user: UserInterface) => Boolean
+}
+
+export interface ContextActions {
+  register: (variables: AuthInterface) => void
+  login: (variables: UserIdentifier) => void
   logout: () => void
+  check: (user: UserInterface) => Boolean
 }
 
 export interface AuthValue {
-  token?: string
-  user?: UserInterface
-  actions?: AuthActions
+  token: string
+  user: UserInterface
+  actions: ContextActions
 }

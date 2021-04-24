@@ -6,13 +6,14 @@ import {
   Button
 } from '@material-ui/core'
 import { Menu } from '@material-ui/icons/'
-import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthProvider'
+import NavStyles from './style'
 
 const Nav = () => {
   const history = useHistory()
-  const { user } = useAuth()
+  const { user, actions } = useAuth()
+  const classes = NavStyles()
 
   return (
     <AppBar position="static">
@@ -28,7 +29,7 @@ const Nav = () => {
           <Menu />
         </IconButton>
 
-        <div style={{ cursor: 'pointer' }} onClick={() => history.push('/')}>
+        <div className={classes.logoText} onClick={() => history.push('/')}>
           <Typography variant="h6">Omen Guide</Typography>
         </div>
 
@@ -64,6 +65,18 @@ const Nav = () => {
         >
           Rules
         </Button>
+        {actions.check(user) && (
+          <Button
+            className={classes.right}
+            color="inherit"
+            onClick={() => {
+              actions.logout()
+              history.push('/')
+            }}
+          >
+            Logout
+          </Button>
+        )}
       </Toolbar>
     </AppBar>
   )

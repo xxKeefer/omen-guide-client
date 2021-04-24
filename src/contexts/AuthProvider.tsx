@@ -1,22 +1,23 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { GraphQLClient } from 'graphql-request'
 import User, {
   UserIdentifier,
   AuthInterface,
   AuthValue
 } from '../interfaces/User'
-import { LOGIN, REGISTER } from '../queries/auth'
+import AuthActions, { AuthClient } from './actions'
 
-const AuthContext = React.createContext<AuthValue>({})
+const initialUserState: User = { name: null, email: null, role: 'public' }
+const AuthContext = React.createContext<AuthValue>({
+  token: '',
+  user: initialUserState,
+  actions: AuthActions
+})
 
 export const useAuth = () => {
   return useContext(AuthContext)
 }
 
 export const AuthProvider = ({ children }: any) => {
-  const gqlEndpoint: string = process.env.REACT_APP_GQL_URL as string
-  const AuthClient = new GraphQLClient(gqlEndpoint)
-  const initialUserState: User = { name: null, email: null, role: 'public' }
   const [user, setUser] = useState(initialUserState)
   const [token, setToken] = useState('')
 
@@ -27,38 +28,30 @@ export const AuthProvider = ({ children }: any) => {
   }, [token])
 
   const register = async (variables: AuthInterface) => {
-    const data = await AuthClient.request(REGISTER, { input: variables })
-    console.log({ data })
-    if (data.errors) return console.log('Something went wrong.')
-    setToken(data.register.jwt)
-    const userData: User = {
-      name: data.register.user.username,
-      email: data.register.user.email,
-      role: data.register.user.role.type
-    }
-    setUser(userData)
+    const { token, user } = await AuthActions.register(variables)
+    setToken(token)
+    setUser(user)
   }
   const login = async (variables: UserIdentifier) => {
-    const data = await AuthClient.request(LOGIN, variables)
-    if (data.errors) return console.log('Something went wrong.')
-    setToken(data.jwt)
-    const userData: User = {
-      name: data.user.username,
-      email: data.user.email,
-      role: data.user.role.type
-    }
-    setUser(userData)
+    const { token, user } = await AuthActions.login(variables)
+    setToken(token)
+    setUser(user)
   }
 
   const logout = () => {
-    setToken('')
-    setUser(initialUserState)
+    const { token, user } = AuthActions.logout()
+    setToken(token)
+    setUser(user)
+  }
+
+  const check = (user: User) => {
+    return AuthActions.check(user)
   }
 
   const authObj: AuthValue = {
     token,
     user,
-    actions: { register, login, logout }
+    actions: { register, login, logout, check }
   }
   return <AuthContext.Provider value={authObj}>{children}</AuthContext.Provider>
 }
