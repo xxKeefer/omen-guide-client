@@ -32,12 +32,7 @@ const Register: React.FC = () => {
             <pre className={classes.errorMessage}>{errorMessage}</pre>
           </Grid>
           <Grid item xs={12}>
-            <RegisterForm
-              onError={(error) => setErrorMessage(error)}
-              // onSubmit={(values) => {
-              //   console.log(values)
-              // }}
-            />
+            <RegisterForm onError={(error) => setErrorMessage(error)} />
           </Grid>
           <Grid container justify="center" item spacing={3} xs={12}>
             <Grid item xs={12}>

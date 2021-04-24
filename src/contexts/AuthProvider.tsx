@@ -28,9 +28,13 @@ export const AuthProvider = ({ children }: any) => {
   }, [token])
 
   const register = async (variables: AuthInterface) => {
-    const { token, user } = await AuthActions.register(variables)
-    setToken(token)
-    setUser(user)
+    try {
+      const { token, user } = await AuthActions.register(variables)
+      setToken(token)
+      setUser(user)
+    } catch (error) {
+      console.error(error)
+    }
   }
   const login = async (variables: UserIdentifier) => {
     const { token, user } = await AuthActions.login(variables)

@@ -2,12 +2,12 @@ import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import FormStyles from './styles/Form'
 import { AuthInterface } from '../../interfaces/User'
-import { RegisterForm as Interface } from '../../interfaces/Forms'
+import { FormSubmission } from '../../interfaces/Forms'
 import { Button, TextField, Grid } from '@material-ui/core'
 import { useAuth } from '../../contexts/AuthProvider'
 import { useHistory } from 'react-router-dom'
 
-const RegisterForm: React.FC<Interface> = ({ onError }) => {
+const RegisterForm: React.FC<FormSubmission> = ({ onError }) => {
   const { actions } = useAuth()
   const history = useHistory()
   const classes = FormStyles()
@@ -22,7 +22,8 @@ const RegisterForm: React.FC<Interface> = ({ onError }) => {
         initialValues={initialValues}
         onSubmit={async (values: AuthInterface) => {
           try {
-            await actions!.register(values)
+            actions.register(values)
+            history.push('/example')
           } catch (error) {
             const {
               message
@@ -30,7 +31,6 @@ const RegisterForm: React.FC<Interface> = ({ onError }) => {
             console.log({ message }, { error })
             onError('ERR:: Duplicate Username or Email')
           }
-          history.push('/example')
         }}
       >
         {({ errors }) => (
