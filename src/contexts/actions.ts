@@ -13,7 +13,6 @@ export const AuthClient = new GraphQLClient(gqlEndpoint)
 
 export const register = async (variables: AuthInterface) => {
   const data = await AuthClient.request(REGISTER, { input: variables })
-  console.log({ data })
   if (data.errors) {
     console.error(data.errors)
     return <UserData>{ token: '', user: initialUserState }
@@ -29,7 +28,6 @@ export const register = async (variables: AuthInterface) => {
 
 export const login = async (variables: UserIdentifier) => {
   const data = await AuthClient.request(LOGIN, { input: variables })
-  console.log({ data })
   if (data.errors) {
     console.log(data.errors)
     return <UserData>{ token: '', user: initialUserState }

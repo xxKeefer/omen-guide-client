@@ -5,9 +5,11 @@ import { AuthInterface } from '../../interfaces/User'
 import { FormSubmission } from '../../interfaces/Forms'
 import { Button, TextField, Grid } from '@material-ui/core'
 import { useAuth } from '../../contexts/AuthProvider'
+import { useHistory } from 'react-router-dom'
 
 const RegisterForm: React.FC<FormSubmission> = ({ onError }) => {
   const { actions } = useAuth()
+  const history = useHistory()
   const classes = FormStyles()
   const initialValues: AuthInterface = {
     username: '',
@@ -20,7 +22,8 @@ const RegisterForm: React.FC<FormSubmission> = ({ onError }) => {
         initialValues={initialValues}
         onSubmit={async (values: AuthInterface) => {
           try {
-            actions.register(values)
+            await actions.register(values)
+            history.push('/example')
           } catch (error) {
             const {
               message

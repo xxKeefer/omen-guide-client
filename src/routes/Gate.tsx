@@ -15,14 +15,14 @@ const Gate = ({
   console.log(user?.role)
 
   if (!user?.name || !user?.email) {
-    return <Redirect to={{ pathname: '/example', state: { from: location } }} />
+    return <Redirect to={{ pathname: '/', state: { from: location } }} />
   }
 
   if (roles && roles.includes(user!.role)) {
     return <Route exact={exact} path={path} component={component} />
   }
 
-  return <Redirect to={{ pathname: '/', state: { from: location } }} />
+  return <Redirect to={{ pathname: '/example', state: { from: location } }} />
 }
 
 export default Gate
