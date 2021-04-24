@@ -6,7 +6,7 @@ const LoginSchema = () => {
       .string()
       .required('username is required')
       .min(3, 'must have at least 3 characters')
-      .max(20, 'must have no more than 20 characters'),
+      .max(50, 'must have no more than 20 characters'),
     password: yup
       .string()
       .required('password is required')

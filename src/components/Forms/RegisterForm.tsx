@@ -41,7 +41,6 @@ const RegisterForm: React.FC<FormSubmission> = ({ onError }) => {
         {({ errors }) => (
           <Grid container justify="center">
             <Form className={classes.form}>
-              {console.log({ errors })}
               <Field
                 className={classes.textfield}
                 name="username"
