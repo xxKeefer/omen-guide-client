@@ -3,15 +3,11 @@ import { Grid, Typography, Paper, Box, Link } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import LoginForm from '../components/Forms/LoginForm'
 import AuthenticationStyles from './styles/AuthenticationPages'
-import { useDispatch, useSelector } from 'react-redux'
-import User from '../interfaces/User'
 import { LOGIN } from '../queries/auth'
 
 const Login: React.FC = () => {
   const classes = AuthenticationStyles()
   const history = useHistory()
-  const dispatch = useDispatch()
-  const user: User = useSelector<User, User>((state) => state)
 
   const [errorMessage, setErrorMessage] = useState<String | null>(null)
 
@@ -20,13 +16,6 @@ const Login: React.FC = () => {
       setErrorMessage(null)
     }, 10000)
   }, [errorMessage])
-
-  useEffect(() => {
-    if (user)
-      setTimeout(() => {
-        setErrorMessage(JSON.stringify(user))
-      }, 10000)
-  }, [user])
 
   return (
     <Box className={classes.content}>

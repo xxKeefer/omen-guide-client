@@ -12,16 +12,17 @@ const Gate = ({
 }: GateProps) => {
   let location = useLocation()
   const { user } = useAuth()
+  console.log(user?.role)
 
-  if (!!user?.name || !!user?.email) {
-    return <Redirect to={{ pathname: '/', state: { from: location } }} />
+  if (!user?.name || !user?.email) {
+    return <Redirect to={{ pathname: '/example', state: { from: location } }} />
   }
 
   if (roles && roles.includes(user!.role)) {
-    return <Redirect to={{ pathname: '/', state: { from: location } }} />
+    return <Route exact={exact} path={path} component={component} />
   }
 
-  return <Route exact={exact} path={path} component={component} />
+  return <Redirect to={{ pathname: '/', state: { from: location } }} />
 }
 
 export default Gate

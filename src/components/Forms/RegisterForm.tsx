@@ -5,9 +5,11 @@ import { AuthInterface } from '../../interfaces/User'
 import { RegisterForm as Interface } from '../../interfaces/Forms'
 import { Button, TextField, Grid } from '@material-ui/core'
 import { useAuth } from '../../contexts/AuthProvider'
+import { useHistory } from 'react-router-dom'
 
-const RegisterForm: React.FC<Interface> = ({ onSubmit }) => {
+const RegisterForm: React.FC<Interface> = ({ onError }) => {
   const { actions } = useAuth()
+  const history = useHistory()
   const classes = FormStyles()
   const initialValues: AuthInterface = {
     username: '',
@@ -25,8 +27,10 @@ const RegisterForm: React.FC<Interface> = ({ onSubmit }) => {
             const {
               message
             } = error.response.errors[0].extensions.exception.data.message[0].messages[0]
-            console.log({ message })
+            console.log({ message }, { error })
+            onError('ERR:: Duplicate Username or Email')
           }
+          history.push('/example')
         }}
       >
         {({ errors }) => (

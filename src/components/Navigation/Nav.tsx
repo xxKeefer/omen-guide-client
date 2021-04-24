@@ -8,14 +8,23 @@ import {
 import { Menu } from '@material-ui/icons/'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
+import { useAuth } from '../../contexts/AuthProvider'
 
 const Nav = () => {
   const history = useHistory()
+  const { user } = useAuth()
 
   return (
     <AppBar position="static">
       <Toolbar>
-        <IconButton edge="start" color="inherit" aria-label="menu">
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          onClick={() => {
+            console.log({ user })
+          }}
+        >
           <Menu />
         </IconButton>
 

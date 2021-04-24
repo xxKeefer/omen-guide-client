@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid, Typography, Paper, Box, Link } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
 import RegisterForm from '../components/Forms/RegisterForm'
@@ -7,6 +7,15 @@ import AuthenticationStyles from './styles/AuthenticationPages'
 const Register: React.FC = () => {
   const classes = AuthenticationStyles()
   const history = useHistory()
+
+  const [errorMessage, setErrorMessage] = useState<String | null>(null)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setErrorMessage(null)
+    }, 10000)
+  }, [errorMessage])
+
   return (
     <Box className={classes.content}>
       <Paper className={classes.formHolder}>
@@ -20,12 +29,14 @@ const Register: React.FC = () => {
             <Typography variant="h6" align="center">
               Get your Social Identification Number here.
             </Typography>
+            <pre className={classes.errorMessage}>{errorMessage}</pre>
           </Grid>
           <Grid item xs={12}>
             <RegisterForm
-              onSubmit={(values) => {
-                console.log(values)
-              }}
+              onError={(error) => setErrorMessage(error)}
+              // onSubmit={(values) => {
+              //   console.log(values)
+              // }}
             />
           </Grid>
           <Grid container justify="center" item spacing={3} xs={12}>
