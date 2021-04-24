@@ -23,7 +23,7 @@ const Nav = () => {
           color="inherit"
           aria-label="menu"
           onClick={() => {
-            console.log({ user })
+            console.log(user)
           }}
         >
           <Menu />

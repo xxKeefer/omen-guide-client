@@ -5,6 +5,7 @@ import User, {
   AuthValue
 } from '../interfaces/User'
 import AuthActions, { AuthClient } from './actions'
+import { useHistory } from 'react-router-dom'
 
 const initialUserState: User = { name: null, email: null, role: 'public' }
 const AuthContext = React.createContext<AuthValue>({
@@ -18,6 +19,8 @@ export const useAuth = () => {
 }
 
 export const AuthProvider = ({ children }: any) => {
+  const history = useHistory()
+
   const [user, setUser] = useState(initialUserState)
   const [token, setToken] = useState('')
 
@@ -32,20 +35,27 @@ export const AuthProvider = ({ children }: any) => {
       const { token, user } = await AuthActions.register(variables)
       setToken(token)
       setUser(user)
+      history.push('/example')
     } catch (error) {
       console.error(error)
     }
   }
   const login = async (variables: UserIdentifier) => {
-    const { token, user } = await AuthActions.login(variables)
-    setToken(token)
-    setUser(user)
+    try {
+      const { token, user } = await AuthActions.login(variables)
+      setToken(token)
+      setUser(user)
+      history.push('/example')
+    } catch (error) {
+      console.log({ error })
+    }
   }
 
   const logout = () => {
     const { token, user } = AuthActions.logout()
     setToken(token)
     setUser(user)
+    history.push('/')
   }
 
   const check = (user: User) => {

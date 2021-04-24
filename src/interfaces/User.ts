@@ -12,6 +12,7 @@ export interface UserData {
 export interface UserIdentifier {
   identifier: string
   password: string
+  provider: 'local'
 }
 export interface AuthInterface {
   username: string

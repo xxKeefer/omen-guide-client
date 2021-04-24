@@ -5,15 +5,14 @@ import FormStyles from './styles/Form'
 import { FormSubmission } from '../../interfaces/Forms'
 import { UserIdentifier } from '../../interfaces/User'
 import { useAuth } from '../../contexts/AuthProvider'
-import { useHistory } from 'react-router-dom'
 
 const LoginForm: React.FC<FormSubmission> = ({ onError }) => {
   const { actions } = useAuth()
-  const history = useHistory()
   const classes = FormStyles()
   const initialValues: UserIdentifier = {
     identifier: '',
-    password: ''
+    password: '',
+    provider: 'local'
   }
   return (
     <Grid container justify="center">
@@ -22,7 +21,6 @@ const LoginForm: React.FC<FormSubmission> = ({ onError }) => {
         onSubmit={async (values: UserIdentifier) => {
           try {
             actions.login(values)
-            history.push('/example')
           } catch (error) {
             const {
               message

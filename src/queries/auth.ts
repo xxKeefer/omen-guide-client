@@ -1,8 +1,8 @@
 import { gql } from 'graphql-request'
 
 export const LOGIN = gql`
-  mutation login($input:{$identifier: String, $password: String})
-    login( input:{identifier: $identifier, password: $password} ) {
+  mutation login($input: UsersPermissionsLoginInput!) {
+    login(input: $input) {
       jwt
       user {
         username

@@ -28,16 +28,17 @@ export const register = async (variables: AuthInterface) => {
 }
 
 export const login = async (variables: UserIdentifier) => {
-  const data = await AuthClient.request(LOGIN, variables)
+  const data = await AuthClient.request(LOGIN, { input: variables })
+  console.log({ data })
   if (data.errors) {
-    console.error(data.errors)
+    console.log(data.errors)
     return <UserData>{ token: '', user: initialUserState }
   }
-  const token = data.jwt
+  const token = data.login.jwt
   const user: User = {
-    name: data.user.username,
-    email: data.user.email,
-    role: data.user.role.type
+    name: data.login.user.username,
+    email: data.login.user.email,
+    role: data.login.user.role.type
   }
   return <UserData>{ token, user }
 }
@@ -48,7 +49,6 @@ export const logout = () => {
 
 export const check = (user: User) => {
   const { name, email } = user
-  console.log('CHECK -=-=-=-', !!name, !!email)
   return !!name || !!email
 }
 
