@@ -1,8 +1,9 @@
 import React from 'react'
-import { Formik, Form, Field } from 'formik'
+import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Button, TextField, Grid } from '@material-ui/core'
 import FormStyles from './styles/Form'
 import { FormSubmission } from '../../interfaces/Forms'
+import schema from './validation/login'
 import { UserIdentifier } from '../../interfaces/User'
 import { useAuth } from '../../contexts/AuthProvider'
 import { useHistory } from 'react-router-dom'
@@ -20,6 +21,8 @@ const LoginForm: React.FC<FormSubmission> = ({ onError }) => {
     <Grid container justify="center">
       <Formik
         initialValues={initialValues}
+        validationSchema={schema}
+        validateOnBlur={true}
         onSubmit={async (values: UserIdentifier) => {
           try {
             await actions.login(values)
@@ -42,6 +45,9 @@ const LoginForm: React.FC<FormSubmission> = ({ onError }) => {
               placeholder="email"
               as={TextField}
             />
+            <ErrorMessage name="identifier">
+              {(msg) => <pre className={classes.error}>ERR:: {msg}</pre>}
+            </ErrorMessage>
             <Field
               className={classes.textfield}
               name="password"
@@ -50,6 +56,9 @@ const LoginForm: React.FC<FormSubmission> = ({ onError }) => {
               type="password"
               as={TextField}
             />
+            <ErrorMessage name="password">
+              {(msg) => <pre className={classes.error}>ERR:: {msg}</pre>}
+            </ErrorMessage>
             <Grid item container justify="center">
               <Button
                 className={classes.button}
