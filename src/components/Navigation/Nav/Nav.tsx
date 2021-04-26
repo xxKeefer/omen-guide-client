@@ -52,18 +52,10 @@ const Nav = () => {
         <Button
           color="inherit"
           onClick={() => {
-            history.push('/example')
+            history.push('/omen')
           }}
         >
-          Example
-        </Button>
-        <Button
-          color="inherit"
-          onClick={() => {
-            history.push('/rules')
-          }}
-        >
-          Rules
+          TEMP:: Omen
         </Button>
         {actions.check(user) && (
           <Button

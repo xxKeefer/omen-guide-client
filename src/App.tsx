@@ -1,7 +1,14 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Nav from './components/Navigation/Nav/Nav'
-import { Example, Home, Login, Register, Rules } from './pages/exports'
+import {
+  Example,
+  Home,
+  Login,
+  Register,
+  Rules,
+  Construction
+} from './pages/exports'
 import Gate from './routes/Gate'
 import keys from './routes/GateKeys'
 
@@ -15,6 +22,7 @@ const App: React.FC = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Gate path="/example" component={Example} />
+        <Gate roles={keys.omen} path="/omen" component={Construction} />
         <Gate roles={keys.rules} path="/rules" component={Rules} />
       </Switch>
     </>

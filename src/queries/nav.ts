@@ -12,3 +12,19 @@ export const CHAPTERS = gql`
     }
   }
 `
+
+export const DATADUMP = gql`
+  {
+    chapters {
+      title
+      subtitle
+      sections {
+        title
+        subtitle
+        articles {
+          body
+        }
+      }
+    }
+  }
+`

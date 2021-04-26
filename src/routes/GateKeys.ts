@@ -10,11 +10,13 @@ type Roles = 'public' | 'authenticated' | 'moderator'
 
 interface KeyChain {
   rules: Roles[]
+  omen: Roles[]
   // example: Roles[]
 }
 
 const GateKeys: KeyChain = {
-  rules: ['authenticated', 'moderator']
+  rules: ['authenticated', 'moderator'],
+  omen: ['authenticated', 'moderator']
 }
 
 export default GateKeys

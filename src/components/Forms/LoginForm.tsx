@@ -26,7 +26,7 @@ const LoginForm: React.FC<FormSubmission> = ({ onError }) => {
         onSubmit={async (values: UserIdentifier) => {
           try {
             await actions.login(values)
-            history.push('/example')
+            history.push('/omen')
           } catch (error) {
             const {
               message

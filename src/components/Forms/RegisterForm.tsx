@@ -28,7 +28,7 @@ const RegisterForm: React.FC<FormSubmission> = ({ onError }) => {
         onSubmit={async (values: AuthInterface) => {
           try {
             await actions.register(values)
-            history.push('/example')
+            history.push('/omen')
           } catch (error) {
             const {
               message
