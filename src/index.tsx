@@ -1,6 +1,7 @@
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/core/styles'
-import { AuthProvider } from './contexts/AuthProvider'
+import { AuthProvider } from './contexts/Auth/AuthProvider'
+import { GQLProvider } from './contexts/GraphQL/GQLProvider'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Helmet } from 'react-helmet'
@@ -20,11 +21,13 @@ ReactDOM.render(
     </Helmet>
     <CssBaseline />
     <AuthProvider>
-      <ThemeProvider theme={theme}>
-        <Router>
-          <App />
-        </Router>
-      </ThemeProvider>
+      <GQLProvider>
+        <ThemeProvider theme={theme}>
+          <Router>
+            <App />
+          </Router>
+        </ThemeProvider>
+      </GQLProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')

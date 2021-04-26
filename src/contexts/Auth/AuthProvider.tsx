@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import User, {
   AuthInterface,
   AuthValue,
   UserIdentifier
-} from '../interfaces/User'
-import AuthActions, { AuthClient } from './actions'
+} from '../../interfaces/User'
+import AuthActions from './actions'
 
 const initialUserState: User = { name: null, email: null, role: 'public' }
 const AuthContext = React.createContext<AuthValue>({
@@ -20,12 +20,6 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState(initialUserState)
   const [token, setToken] = useState('')
-
-  useEffect(() => {
-    token !== ''
-      ? AuthClient.setHeader('authorization', `Bearer ${token}`)
-      : AuthClient.setHeaders({})
-  }, [token])
 
   const register = async (variables: AuthInterface) => {
     try {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import Nav from './components/Navigation/Nav'
+import Nav from './components/Navigation/Nav/Nav'
 import { Example, Home, Login, Register, Rules } from './pages/exports'
 import Gate from './routes/Gate'
 import keys from './routes/GateKeys'

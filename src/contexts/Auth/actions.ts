@@ -3,16 +3,14 @@ import User, {
   AuthInterface,
   ActionInterface,
   UserData
-} from '../interfaces/User'
-import { GraphQLClient } from 'graphql-request'
-import { LOGIN, REGISTER } from '../queries/auth'
+} from '../../interfaces/User'
+import { GraphQL } from '../../queries/Client'
+import { LOGIN, REGISTER } from '../../queries/auth'
 
 const initialUserState: User = { name: null, email: null, role: 'public' }
-const gqlEndpoint: string = process.env.REACT_APP_GQL_URL as string
-export const AuthClient = new GraphQLClient(gqlEndpoint)
 
 export const register = async (variables: AuthInterface) => {
-  const data = await AuthClient.request(REGISTER, { input: variables })
+  const data = await GraphQL.request(REGISTER, { input: variables })
   if (data.errors) {
     console.error(data.errors)
     return <UserData>{ token: '', user: initialUserState }
@@ -27,7 +25,7 @@ export const register = async (variables: AuthInterface) => {
 }
 
 export const login = async (variables: UserIdentifier) => {
-  const data = await AuthClient.request(LOGIN, { input: variables })
+  const data = await GraphQL.request(LOGIN, { input: variables })
   if (data.errors) {
     console.log(data.errors)
     return <UserData>{ token: '', user: initialUserState }

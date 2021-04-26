@@ -5,7 +5,7 @@ import FormStyles from './styles/Form'
 import { FormSubmission } from '../../interfaces/Forms'
 import schema from './validation/login'
 import { UserIdentifier } from '../../interfaces/User'
-import { useAuth } from '../../contexts/AuthProvider'
+import { useAuth } from '../../contexts/Auth/AuthProvider'
 import { useHistory } from 'react-router-dom'
 
 const LoginForm: React.FC<FormSubmission> = ({ onError }) => {

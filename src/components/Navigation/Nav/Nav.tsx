@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core'
 import { Menu } from '@material-ui/icons/'
 import { useHistory } from 'react-router-dom'
-import { useAuth } from '../../contexts/AuthProvider'
+import { useAuth } from '../../../contexts/Auth/AuthProvider'
 import NavStyles from './style'
 
 const Nav = () => {
