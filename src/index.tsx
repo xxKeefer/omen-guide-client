@@ -19,10 +19,10 @@ ReactDOM.render(
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
       />
     </Helmet>
-    <CssBaseline />
     <AuthProvider>
       <GQLProvider>
         <ThemeProvider theme={theme}>
+          <CssBaseline />
           <Router>
             <App />
           </Router>

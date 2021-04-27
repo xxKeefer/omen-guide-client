@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles'
 
-const AuthenticationStyles = makeStyles({
+const AuthenticationStyles = makeStyles(({ palette }) => ({
   content: {
     height: '80vh',
     display: 'flex',
@@ -15,9 +15,9 @@ const AuthenticationStyles = makeStyles({
     textAlign: 'center',
     fontSize: '16px',
     fontWeight: 'bold',
-    color: 'red',
+    color: palette.error.main,
     marginBottom: '-20px'
   }
-})
+}))
 
 export default AuthenticationStyles

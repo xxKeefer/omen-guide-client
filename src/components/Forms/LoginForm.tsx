@@ -25,7 +25,9 @@ const LoginForm: React.FC<FormSubmission> = ({ onError }) => {
         validateOnBlur={true}
         onSubmit={async (values: UserIdentifier) => {
           try {
-            await actions.login(values)
+            const res = await actions.login(values)
+            console.log({ res })
+            //TODO: if user uses wrong password, should flash err msg
             history.push('/omen')
           } catch (error) {
             const {
