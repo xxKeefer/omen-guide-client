@@ -13,15 +13,14 @@ const Example: React.FC = () => {
     >
       <Grid container justify="center">
         <Grid container direction="column" justify="center">
-          <div
+          <Box
             style={{
               width: '100%',
-              height: '100%',
-              backgroundColor: 'pink'
+              height: '100%'
             }}
           >
             <DataDump query={DATADUMP} />
-          </div>
+          </Box>
         </Grid>
       </Grid>
     </Box>

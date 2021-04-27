@@ -36,6 +36,7 @@ export const AuthProvider = ({ children }: any) => {
       setToken(token)
       setUser(user)
     } catch (error) {
+      //TODO: this should return the error so the form can display flash message
       console.log({ error })
     }
   }
