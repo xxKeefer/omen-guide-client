@@ -13,7 +13,9 @@ const theme = createMuiTheme({
   overrides: {
     MuiLink: {
       root: {
-        cursor: 'pointer'
+        cursor: 'pointer',
+        fontFamily: 'BioRhyme',
+        fontWeight: 400
       }
     },
     MuiInputBase: {
@@ -32,6 +34,16 @@ const theme = createMuiTheme({
     info: { main: '#0092FF' },
     success: { main: '#49FF00' },
     background: { paper: '#2D1C28', default: '#281723' }
+  },
+  typography: {
+    fontFamily: 'Kanit, Roboto',
+    h1: { fontFamily: 'Days One' },
+    h2: { fontFamily: 'Days One' },
+    h3: { fontFamily: 'Days One' },
+    h4: { fontFamily: 'Days One' },
+    h5: { fontFamily: 'Days One' },
+    h6: { fontFamily: 'Days One' },
+    button: { fontFamily: 'BioRhyme', fontWeight: 800 }
   }
 })
 
