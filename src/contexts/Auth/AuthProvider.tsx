@@ -1,9 +1,5 @@
 import React, { useContext, useState } from 'react'
-import User, {
-  AuthInterface,
-  AuthValue,
-  UserIdentifier
-} from '../../interfaces/User'
+import User, { AuthInterface, AuthValue, UserIdentifier } from 'interfaces/User'
 import AuthActions from './actions'
 
 const initialUserState: User = { name: null, email: null, role: 'public' }

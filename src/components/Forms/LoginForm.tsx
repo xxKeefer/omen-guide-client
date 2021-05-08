@@ -2,10 +2,10 @@ import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Button, TextField, Grid } from '@material-ui/core'
 import FormStyles from './styles/Form'
-import { FormSubmission } from '../../interfaces/Forms'
+import { FormSubmission } from 'interfaces/Forms'
 import schema from './validation/login'
-import { UserIdentifier } from '../../interfaces/User'
-import { useAuth } from '../../contexts/Auth/AuthProvider'
+import { UserIdentifier } from 'interfaces/User'
+import { useAuth } from 'contexts/Auth/AuthProvider'
 import { useHistory } from 'react-router-dom'
 
 const LoginForm: React.FC<FormSubmission> = ({ onError }) => {

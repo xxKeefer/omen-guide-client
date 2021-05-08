@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Article, ChapterHeader, SectionHeader } from '../Layout/exports'
+import {
+  Article,
+  ChapterHeader,
+  SectionHeader
+} from 'components/Layout/exports'
 import { Paper, Box } from '@material-ui/core'
-import { useGQL } from '../../contexts/GraphQL/GQLProvider'
+import { useGQL } from 'contexts/GraphQL/GQLProvider'
 
 const DataDump = ({ query }: { query: string }) => {
   const { GraphQL } = useGQL()

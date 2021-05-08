@@ -3,9 +3,9 @@ import User, {
   AuthInterface,
   ActionInterface,
   UserData
-} from '../../interfaces/User'
-import { GraphQL } from '../../queries/Client'
-import { LOGIN, REGISTER } from '../../queries/auth'
+} from 'interfaces/User'
+import { GraphQL } from 'queries/Client'
+import { LOGIN, REGISTER } from 'queries/auth'
 
 const initialUserState: User = { name: null, email: null, role: 'public' }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Box } from '@material-ui/core'
-import DataDump from '../components/Test/DataDump'
-import { DATADUMP } from '../queries/nav'
+import DataDump from 'components/Test/DataDump'
+import { DATADUMP } from 'queries/nav'
 
 const Example: React.FC = () => {
   return (

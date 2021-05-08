@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useGQL } from '../../../contexts/GraphQL/GQLProvider'
+import { useGQL } from 'contexts/GraphQL/GQLProvider'
 import {
   Grid,
   List,

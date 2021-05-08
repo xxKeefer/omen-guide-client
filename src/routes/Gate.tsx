@@ -1,6 +1,6 @@
-import { useAuth } from '../contexts/Auth/AuthProvider'
+import { useAuth } from 'contexts/Auth/AuthProvider'
 import { Route, Redirect, RouteProps, useLocation } from 'react-router-dom'
-import { Example } from '../pages/exports'
+import { Example } from 'pages/exports'
 interface GateProps extends RouteProps {
   roles?: string[]
 }
