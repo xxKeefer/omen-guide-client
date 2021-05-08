@@ -1,5 +1,14 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 
+declare module '@material-ui/core/styles/createPalette' {
+  interface Palette {
+    tertiary: Palette['primary']
+  }
+  interface PaletteOptions {
+    tertiary: PaletteOptions['primary']
+  }
+}
+
 const theme = createMuiTheme({
   overrides: {
     MuiLink: {
@@ -17,6 +26,7 @@ const theme = createMuiTheme({
     type: 'dark',
     primary: { main: '#FF396E' },
     secondary: { main: '#CCFF33' },
+    tertiary: { main: '#33e4ff' },
     error: { main: '#FF2900' },
     warning: { main: '#FFC600' },
     info: { main: '#0092FF' },
