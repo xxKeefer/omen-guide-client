@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Grid, Typography, Paper, Box, Link } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
-import LoginForm from '../components/Forms/LoginForm'
+import LoginForm from 'components/Forms/LoginForm'
 import AuthenticationStyles from './styles/AuthenticationPages'
-import { LOGIN } from '../queries/auth'
+import { LOGIN } from 'queries/auth'
 
 const Login: React.FC = () => {
   const classes = AuthenticationStyles()

@@ -7,7 +7,13 @@ const FormStyles = makeStyles(({ palette }) => ({
     display: 'block',
     paddingBottom: '10px'
   },
-  error: { color: palette.error.main, fontSize: 8, margin: 0 },
+  error: {
+    color: palette.error.main,
+    fontSize: 10,
+    margin: 0,
+    fontFamily: 'BioRhyme',
+    fontWeight: 400
+  },
   button: {
     width: '50%',
     marginTop: 20

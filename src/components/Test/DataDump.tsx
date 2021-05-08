@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Article, ChapterHeader, SectionHeader } from '../Layout/exports'
+import {
+  Article,
+  ChapterHeader,
+  SectionHeader
+} from 'components/Layout/exports'
 import { Paper, Box } from '@material-ui/core'
-import { useGQL } from '../../contexts/GraphQL/GQLProvider'
+import { useGQL } from 'contexts/GraphQL/GQLProvider'
+import LayoutStyles from '../Layout/styles/LayoutStyles'
 
 const DataDump = ({ query }: { query: string }) => {
   const { GraphQL } = useGQL()
+  const classes = LayoutStyles()
 
   const [data, setData] = useState<any>({})
 
@@ -17,13 +23,15 @@ const DataDump = ({ query }: { query: string }) => {
   }, [])
 
   return (
-    <Box style={{ textAlign: 'justify', backgroundColor: 'white', margin: 35 }}>
+    <Box className={classes.content}>
       {data.chapters &&
         data.chapters.map((chapter: any, index: number) => {
           return (
             <Paper
               key={`Ch-${index}`}
-              style={{ paddingBottom: 40, borderTop: 'solid 4px #e2e2e2' }}
+              className={classes.chapter}
+              elevation={0}
+              square
             >
               <ChapterHeader
                 title={chapter.title}
@@ -31,24 +39,14 @@ const DataDump = ({ query }: { query: string }) => {
               />
               {chapter.sections.map((section: any, index: number) => {
                 return (
-                  <Box
-                    key={`Se-${index}`}
-                    style={{
-                      margin: '0 0 40px 60px',
-                      paddingLeft: 20,
-                      borderLeft: '2px solid #ddd'
-                    }}
-                  >
+                  <Box key={`Se-${index}`} className={classes.section}>
                     <SectionHeader
                       title={section.title}
                       subtitle={section.subtitle}
                     />
                     {section.articles.map((article: any, index: number) => {
                       return (
-                        <Box
-                          key={`Ar-${index}`}
-                          style={{ margin: '0 0 60px 40px' }}
-                        >
+                        <Box key={`Ar-${index}`} className={classes.article}>
                           <Article body={article.body} />
                         </Box>
                       )

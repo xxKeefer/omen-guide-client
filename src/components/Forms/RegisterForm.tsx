@@ -1,11 +1,11 @@
 import React from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import FormStyles from './styles/Form'
-import { AuthInterface } from '../../interfaces/User'
-import { FormSubmission } from '../../interfaces/Forms'
+import { AuthInterface } from 'interfaces/User'
+import { FormSubmission } from 'interfaces/Forms'
 import schema from './validation/register'
 import { Button, TextField, Grid } from '@material-ui/core'
-import { useAuth } from '../../contexts/Auth/AuthProvider'
+import { useAuth } from 'contexts/Auth/AuthProvider'
 import { useHistory } from 'react-router-dom'
 
 const RegisterForm: React.FC<FormSubmission> = ({ onError }) => {

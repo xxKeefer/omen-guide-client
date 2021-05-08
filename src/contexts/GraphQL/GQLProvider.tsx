@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { useAuth } from '../Auth/AuthProvider'
+import { useAuth } from 'contexts/Auth/AuthProvider'
 import { GraphQLClient } from 'graphql-request'
 
 const gqlEndpoint: string = process.env.REACT_APP_GQL_URL as string

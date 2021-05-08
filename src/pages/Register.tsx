@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Grid, Typography, Paper, Box, Link } from '@material-ui/core'
 import { useHistory } from 'react-router-dom'
-import RegisterForm from '../components/Forms/RegisterForm'
+import RegisterForm from 'components/Forms/RegisterForm'
 import AuthenticationStyles from './styles/AuthenticationPages'
 
 const Register: React.FC = () => {

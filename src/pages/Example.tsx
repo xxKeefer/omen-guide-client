@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, Box } from '@material-ui/core'
-import SideNav from '../components/Navigation/SideNav/SideNav'
-import { CHAPTERS } from '../queries/nav'
+import SideNav from 'components/Navigation/SideNav/SideNav'
+import { CHAPTERS } from 'queries/nav'
 
 const Example: React.FC = () => {
   return (
