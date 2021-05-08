@@ -1,14 +1,19 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
+import LayoutStyles from './styles/LayoutStyles'
 
 type HeaderVars = { title: string; subtitle: string }
 
 const ChapterHeader = ({ title, subtitle }: HeaderVars) => {
+  const classes = LayoutStyles()
   return (
     <>
-      <div style={{ margin: '10px 0px', border: 'solid 2px #e2e2e2' }}></div>
-      <Typography variant="h1">{title}</Typography>
-      <Typography variant="h2">{subtitle}</Typography>
+      <Typography className={classes.title} variant="h1">
+        {title}
+      </Typography>
+      <Typography className={classes.subtitle} variant="h2">
+        {subtitle}
+      </Typography>
     </>
   )
 }

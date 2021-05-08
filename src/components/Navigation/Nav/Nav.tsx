@@ -34,6 +34,7 @@ const Nav = () => {
         </div>
 
         <Button
+          className={classes.navLink}
           color="inherit"
           onClick={() => {
             history.push('/login')
@@ -42,6 +43,7 @@ const Nav = () => {
           Login
         </Button>
         <Button
+          className={classes.navLink}
           color="inherit"
           onClick={() => {
             history.push('/register')
@@ -50,6 +52,7 @@ const Nav = () => {
           Register
         </Button>
         <Button
+          className={classes.navLink}
           color="inherit"
           onClick={() => {
             history.push('/omen')

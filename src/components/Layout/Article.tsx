@@ -4,7 +4,7 @@ import { Typography } from '@material-ui/core'
 type ArticleVars = { body: string }
 const Article = ({ body }: ArticleVars) => {
   return (
-    <div style={{ padding: 10 }}>
+    <div>
       {body ? (
         <Typography variant="body1">{body}</Typography>
       ) : (
